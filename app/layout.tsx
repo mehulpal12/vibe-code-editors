@@ -28,16 +28,16 @@ export default async function RootLayout({
   const session = await auth()
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
     <SessionProvider session={session}>
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+      <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
         {children}
+    </ThemeProvider>
       </body>
     </html>
     </SessionProvider>
-    </ThemeProvider>
   );
 }
