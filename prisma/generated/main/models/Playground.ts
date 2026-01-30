@@ -198,6 +198,7 @@ export type PlaygroundWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Playground"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Playground"> | Date | string
   userId?: Prisma.StringFilter<"Playground"> | string
+  starmarks?: Prisma.StarMarkListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }
 
@@ -209,6 +210,7 @@ export type PlaygroundOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   userId?: Prisma.SortOrder
+  starmarks?: Prisma.StarMarkOrderByRelationAggregateInput
   user?: Prisma.UserOrderByWithRelationInput
 }
 
@@ -223,6 +225,7 @@ export type PlaygroundWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Playground"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Playground"> | Date | string
   userId?: Prisma.StringFilter<"Playground"> | string
+  starmarks?: Prisma.StarMarkListRelationFilter
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
 }, "id">
 
@@ -259,7 +262,8 @@ export type PlaygroundCreateInput = {
   template?: $Enums.Templates
   createdAt?: Date | string
   updatedAt?: Date | string
-  user: Prisma.UserCreateNestedOneWithoutMyPlagroundInput
+  starmarks?: Prisma.StarMarkCreateNestedManyWithoutPlaygroundInput
+  user: Prisma.UserCreateNestedOneWithoutMyPlaygroundInput
 }
 
 export type PlaygroundUncheckedCreateInput = {
@@ -270,6 +274,7 @@ export type PlaygroundUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   userId: string
+  starmarks?: Prisma.StarMarkUncheckedCreateNestedManyWithoutPlaygroundInput
 }
 
 export type PlaygroundUpdateInput = {
@@ -279,7 +284,8 @@ export type PlaygroundUpdateInput = {
   template?: Prisma.EnumTemplatesFieldUpdateOperationsInput | $Enums.Templates
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  user?: Prisma.UserUpdateOneRequiredWithoutMyPlagroundNestedInput
+  starmarks?: Prisma.StarMarkUpdateManyWithoutPlaygroundNestedInput
+  user?: Prisma.UserUpdateOneRequiredWithoutMyPlaygroundNestedInput
 }
 
 export type PlaygroundUncheckedUpdateInput = {
@@ -290,6 +296,7 @@ export type PlaygroundUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
+  starmarks?: Prisma.StarMarkUncheckedUpdateManyWithoutPlaygroundNestedInput
 }
 
 export type PlaygroundCreateManyInput = {
@@ -361,6 +368,11 @@ export type PlaygroundMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
 }
 
+export type PlaygroundScalarRelationFilter = {
+  is?: Prisma.PlaygroundWhereInput
+  isNot?: Prisma.PlaygroundWhereInput
+}
+
 export type PlaygroundCreateNestedManyWithoutUserInput = {
   create?: Prisma.XOR<Prisma.PlaygroundCreateWithoutUserInput, Prisma.PlaygroundUncheckedCreateWithoutUserInput> | Prisma.PlaygroundCreateWithoutUserInput[] | Prisma.PlaygroundUncheckedCreateWithoutUserInput[]
   connectOrCreate?: Prisma.PlaygroundCreateOrConnectWithoutUserInput | Prisma.PlaygroundCreateOrConnectWithoutUserInput[]
@@ -407,6 +419,20 @@ export type EnumTemplatesFieldUpdateOperationsInput = {
   set?: $Enums.Templates
 }
 
+export type PlaygroundCreateNestedOneWithoutStarmarksInput = {
+  create?: Prisma.XOR<Prisma.PlaygroundCreateWithoutStarmarksInput, Prisma.PlaygroundUncheckedCreateWithoutStarmarksInput>
+  connectOrCreate?: Prisma.PlaygroundCreateOrConnectWithoutStarmarksInput
+  connect?: Prisma.PlaygroundWhereUniqueInput
+}
+
+export type PlaygroundUpdateOneRequiredWithoutStarmarksNestedInput = {
+  create?: Prisma.XOR<Prisma.PlaygroundCreateWithoutStarmarksInput, Prisma.PlaygroundUncheckedCreateWithoutStarmarksInput>
+  connectOrCreate?: Prisma.PlaygroundCreateOrConnectWithoutStarmarksInput
+  upsert?: Prisma.PlaygroundUpsertWithoutStarmarksInput
+  connect?: Prisma.PlaygroundWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PlaygroundUpdateToOneWithWhereWithoutStarmarksInput, Prisma.PlaygroundUpdateWithoutStarmarksInput>, Prisma.PlaygroundUncheckedUpdateWithoutStarmarksInput>
+}
+
 export type PlaygroundCreateWithoutUserInput = {
   id?: string
   title: string
@@ -414,6 +440,7 @@ export type PlaygroundCreateWithoutUserInput = {
   template?: $Enums.Templates
   createdAt?: Date | string
   updatedAt?: Date | string
+  starmarks?: Prisma.StarMarkCreateNestedManyWithoutPlaygroundInput
 }
 
 export type PlaygroundUncheckedCreateWithoutUserInput = {
@@ -423,6 +450,7 @@ export type PlaygroundUncheckedCreateWithoutUserInput = {
   template?: $Enums.Templates
   createdAt?: Date | string
   updatedAt?: Date | string
+  starmarks?: Prisma.StarMarkUncheckedCreateNestedManyWithoutPlaygroundInput
 }
 
 export type PlaygroundCreateOrConnectWithoutUserInput = {
@@ -464,6 +492,62 @@ export type PlaygroundScalarWhereInput = {
   userId?: Prisma.StringFilter<"Playground"> | string
 }
 
+export type PlaygroundCreateWithoutStarmarksInput = {
+  id?: string
+  title: string
+  description?: string | null
+  template?: $Enums.Templates
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutMyPlaygroundInput
+}
+
+export type PlaygroundUncheckedCreateWithoutStarmarksInput = {
+  id?: string
+  title: string
+  description?: string | null
+  template?: $Enums.Templates
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  userId: string
+}
+
+export type PlaygroundCreateOrConnectWithoutStarmarksInput = {
+  where: Prisma.PlaygroundWhereUniqueInput
+  create: Prisma.XOR<Prisma.PlaygroundCreateWithoutStarmarksInput, Prisma.PlaygroundUncheckedCreateWithoutStarmarksInput>
+}
+
+export type PlaygroundUpsertWithoutStarmarksInput = {
+  update: Prisma.XOR<Prisma.PlaygroundUpdateWithoutStarmarksInput, Prisma.PlaygroundUncheckedUpdateWithoutStarmarksInput>
+  create: Prisma.XOR<Prisma.PlaygroundCreateWithoutStarmarksInput, Prisma.PlaygroundUncheckedCreateWithoutStarmarksInput>
+  where?: Prisma.PlaygroundWhereInput
+}
+
+export type PlaygroundUpdateToOneWithWhereWithoutStarmarksInput = {
+  where?: Prisma.PlaygroundWhereInput
+  data: Prisma.XOR<Prisma.PlaygroundUpdateWithoutStarmarksInput, Prisma.PlaygroundUncheckedUpdateWithoutStarmarksInput>
+}
+
+export type PlaygroundUpdateWithoutStarmarksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  template?: Prisma.EnumTemplatesFieldUpdateOperationsInput | $Enums.Templates
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutMyPlaygroundNestedInput
+}
+
+export type PlaygroundUncheckedUpdateWithoutStarmarksInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  template?: Prisma.EnumTemplatesFieldUpdateOperationsInput | $Enums.Templates
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+}
+
 export type PlaygroundCreateManyUserInput = {
   id?: string
   title: string
@@ -480,6 +564,7 @@ export type PlaygroundUpdateWithoutUserInput = {
   template?: Prisma.EnumTemplatesFieldUpdateOperationsInput | $Enums.Templates
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  starmarks?: Prisma.StarMarkUpdateManyWithoutPlaygroundNestedInput
 }
 
 export type PlaygroundUncheckedUpdateWithoutUserInput = {
@@ -489,6 +574,7 @@ export type PlaygroundUncheckedUpdateWithoutUserInput = {
   template?: Prisma.EnumTemplatesFieldUpdateOperationsInput | $Enums.Templates
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  starmarks?: Prisma.StarMarkUncheckedUpdateManyWithoutPlaygroundNestedInput
 }
 
 export type PlaygroundUncheckedUpdateManyWithoutUserInput = {
@@ -501,6 +587,35 @@ export type PlaygroundUncheckedUpdateManyWithoutUserInput = {
 }
 
 
+/**
+ * Count Type PlaygroundCountOutputType
+ */
+
+export type PlaygroundCountOutputType = {
+  starmarks: number
+}
+
+export type PlaygroundCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  starmarks?: boolean | PlaygroundCountOutputTypeCountStarmarksArgs
+}
+
+/**
+ * PlaygroundCountOutputType without action
+ */
+export type PlaygroundCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PlaygroundCountOutputType
+   */
+  select?: Prisma.PlaygroundCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PlaygroundCountOutputType without action
+ */
+export type PlaygroundCountOutputTypeCountStarmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.StarMarkWhereInput
+}
+
 
 export type PlaygroundSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -510,7 +625,9 @@ export type PlaygroundSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   createdAt?: boolean
   updatedAt?: boolean
   userId?: boolean
+  starmarks?: boolean | Prisma.Playground$starmarksArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.PlaygroundCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["playground"]>
 
 export type PlaygroundSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -547,7 +664,9 @@ export type PlaygroundSelectScalar = {
 
 export type PlaygroundOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "description" | "template" | "createdAt" | "updatedAt" | "userId", ExtArgs["result"]["playground"]>
 export type PlaygroundInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  starmarks?: boolean | Prisma.Playground$starmarksArgs<ExtArgs>
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  _count?: boolean | Prisma.PlaygroundCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PlaygroundIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -559,6 +678,7 @@ export type PlaygroundIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.E
 export type $PlaygroundPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "Playground"
   objects: {
+    starmarks: Prisma.$StarMarkPayload<ExtArgs>[]
     user: Prisma.$UserPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -963,6 +1083,7 @@ readonly fields: PlaygroundFieldRefs;
  */
 export interface Prisma__PlaygroundClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  starmarks<T extends Prisma.Playground$starmarksArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Playground$starmarksArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StarMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1393,6 +1514,30 @@ export type PlaygroundDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.In
    * Limit how many Playgrounds to delete.
    */
   limit?: number
+}
+
+/**
+ * Playground.starmarks
+ */
+export type Playground$starmarksArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the StarMark
+   */
+  select?: Prisma.StarMarkSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the StarMark
+   */
+  omit?: Prisma.StarMarkOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.StarMarkInclude<ExtArgs> | null
+  where?: Prisma.StarMarkWhereInput
+  orderBy?: Prisma.StarMarkOrderByWithRelationInput | Prisma.StarMarkOrderByWithRelationInput[]
+  cursor?: Prisma.StarMarkWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.StarMarkScalarFieldEnum | Prisma.StarMarkScalarFieldEnum[]
 }
 
 /**
