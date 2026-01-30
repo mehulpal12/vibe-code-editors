@@ -386,7 +386,8 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 export const ModelName = {
   User: 'User',
   Account: 'Account',
-  Playground: 'Playground'
+  Playground: 'Playground',
+  StarMark: 'StarMark'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -402,7 +403,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "account" | "playground"
+    modelProps: "user" | "account" | "playground" | "starMark"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -628,6 +629,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    StarMark: {
+      payload: Prisma.$StarMarkPayload<ExtArgs>
+      fields: Prisma.StarMarkFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.StarMarkFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.StarMarkFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        findFirst: {
+          args: Prisma.StarMarkFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.StarMarkFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        findMany: {
+          args: Prisma.StarMarkFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>[]
+        }
+        create: {
+          args: Prisma.StarMarkCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        createMany: {
+          args: Prisma.StarMarkCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.StarMarkCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>[]
+        }
+        delete: {
+          args: Prisma.StarMarkDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        update: {
+          args: Prisma.StarMarkUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        deleteMany: {
+          args: Prisma.StarMarkDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.StarMarkUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.StarMarkUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>[]
+        }
+        upsert: {
+          args: Prisma.StarMarkUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$StarMarkPayload>
+        }
+        aggregate: {
+          args: Prisma.StarMarkAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateStarMark>
+        }
+        groupBy: {
+          args: Prisma.StarMarkGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StarMarkGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.StarMarkCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.StarMarkCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -709,6 +784,17 @@ export const PlaygroundScalarFieldEnum = {
 } as const
 
 export type PlaygroundScalarFieldEnum = (typeof PlaygroundScalarFieldEnum)[keyof typeof PlaygroundScalarFieldEnum]
+
+
+export const StarMarkScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  playgroundId: 'playgroundId',
+  isMarked: 'isMarked',
+  createdAt: 'createdAt'
+} as const
+
+export type StarMarkScalarFieldEnum = (typeof StarMarkScalarFieldEnum)[keyof typeof StarMarkScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -808,6 +894,13 @@ export type EnumTemplatesFieldRefInput<$PrismaModel> = FieldRefInputType<$Prisma
  * Reference to a field of type 'Templates[]'
  */
 export type ListEnumTemplatesFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Templates[]'>
+    
+
+
+/**
+ * Reference to a field of type 'Boolean'
+ */
+export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -922,6 +1015,7 @@ export type GlobalOmitConfig = {
   user?: Prisma.UserOmit
   account?: Prisma.AccountOmit
   playground?: Prisma.PlaygroundOmit
+  starMark?: Prisma.StarMarkOmit
 }
 
 /* Types for Logging */

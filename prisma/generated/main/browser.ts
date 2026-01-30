@@ -32,3 +32,8 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type Playground = Prisma.PlaygroundModel
+/**
+ * Model StarMark
+ * 
+ */
+export type StarMark = Prisma.StarMarkModel
