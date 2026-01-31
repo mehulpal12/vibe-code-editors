@@ -29,6 +29,7 @@ export type UserMinAggregateOutputType = {
   name: string | null
   email: string | null
   image: string | null
+  emailVerified: Date | null
   role: $Enums.UserRole | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -39,6 +40,7 @@ export type UserMaxAggregateOutputType = {
   name: string | null
   email: string | null
   image: string | null
+  emailVerified: Date | null
   role: $Enums.UserRole | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -49,6 +51,7 @@ export type UserCountAggregateOutputType = {
   name: number
   email: number
   image: number
+  emailVerified: number
   role: number
   createdAt: number
   updatedAt: number
@@ -61,6 +64,7 @@ export type UserMinAggregateInputType = {
   name?: true
   email?: true
   image?: true
+  emailVerified?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -71,6 +75,7 @@ export type UserMaxAggregateInputType = {
   name?: true
   email?: true
   image?: true
+  emailVerified?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -81,6 +86,7 @@ export type UserCountAggregateInputType = {
   name?: true
   email?: true
   image?: true
+  emailVerified?: true
   role?: true
   createdAt?: true
   updatedAt?: true
@@ -164,6 +170,7 @@ export type UserGroupByOutputType = {
   name: string | null
   email: string
   image: string | null
+  emailVerified: Date | null
   role: $Enums.UserRole
   createdAt: Date
   updatedAt: Date
@@ -195,11 +202,12 @@ export type UserWhereInput = {
   name?: Prisma.StringNullableFilter<"User"> | string | null
   email?: Prisma.StringFilter<"User"> | string
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accounts?: Prisma.AccountListRelationFilter
-  myPlayground?: Prisma.PlaygroundListRelationFilter
+  myPlaground?: Prisma.PlaygroundListRelationFilter
   staredPlayground?: Prisma.StarMarkListRelationFilter
 }
 
@@ -208,11 +216,12 @@ export type UserOrderByWithRelationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   accounts?: Prisma.AccountOrderByRelationAggregateInput
-  myPlayground?: Prisma.PlaygroundOrderByRelationAggregateInput
+  myPlaground?: Prisma.PlaygroundOrderByRelationAggregateInput
   staredPlayground?: Prisma.StarMarkOrderByRelationAggregateInput
 }
 
@@ -224,11 +233,12 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[]
   name?: Prisma.StringNullableFilter<"User"> | string | null
   image?: Prisma.StringNullableFilter<"User"> | string | null
+  emailVerified?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   role?: Prisma.EnumUserRoleFilter<"User"> | $Enums.UserRole
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
   accounts?: Prisma.AccountListRelationFilter
-  myPlayground?: Prisma.PlaygroundListRelationFilter
+  myPlaground?: Prisma.PlaygroundListRelationFilter
   staredPlayground?: Prisma.StarMarkListRelationFilter
 }, "id" | "email">
 
@@ -237,6 +247,7 @@ export type UserOrderByWithAggregationInput = {
   name?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrder
   image?: Prisma.SortOrderInput | Prisma.SortOrder
+  emailVerified?: Prisma.SortOrderInput | Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -253,6 +264,7 @@ export type UserScalarWhereWithAggregatesInput = {
   name?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
   email?: Prisma.StringWithAggregatesFilter<"User"> | string
   image?: Prisma.StringNullableWithAggregatesFilter<"User"> | string | null
+  emailVerified?: Prisma.DateTimeNullableWithAggregatesFilter<"User"> | Date | string | null
   role?: Prisma.EnumUserRoleWithAggregatesFilter<"User"> | $Enums.UserRole
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"User"> | Date | string
@@ -263,11 +275,12 @@ export type UserCreateInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  myPlayground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
   staredPlayground?: Prisma.StarMarkCreateNestedManyWithoutUserInput
 }
 
@@ -276,11 +289,12 @@ export type UserUncheckedCreateInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  myPlayground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
   staredPlayground?: Prisma.StarMarkUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -289,11 +303,12 @@ export type UserUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  myPlayground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
   staredPlayground?: Prisma.StarMarkUpdateManyWithoutUserNestedInput
 }
 
@@ -302,11 +317,12 @@ export type UserUncheckedUpdateInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  myPlayground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
   staredPlayground?: Prisma.StarMarkUncheckedUpdateManyWithoutUserNestedInput
 }
 
@@ -315,6 +331,7 @@ export type UserCreateManyInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -325,6 +342,7 @@ export type UserUpdateManyMutationInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -335,6 +353,7 @@ export type UserUncheckedUpdateManyInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -345,6 +364,7 @@ export type UserCountOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -355,6 +375,7 @@ export type UserMaxOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -365,6 +386,7 @@ export type UserMinOrderByAggregateInput = {
   name?: Prisma.SortOrder
   email?: Prisma.SortOrder
   image?: Prisma.SortOrder
+  emailVerified?: Prisma.SortOrder
   role?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -381,6 +403,10 @@ export type StringFieldUpdateOperationsInput = {
 
 export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
+}
+
+export type NullableDateTimeFieldUpdateOperationsInput = {
+  set?: Date | string | null
 }
 
 export type EnumUserRoleFieldUpdateOperationsInput = {
@@ -405,18 +431,18 @@ export type UserUpdateOneRequiredWithoutAccountsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAccountsInput, Prisma.UserUpdateWithoutAccountsInput>, Prisma.UserUncheckedUpdateWithoutAccountsInput>
 }
 
-export type UserCreateNestedOneWithoutMyPlaygroundInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMyPlaygroundInput, Prisma.UserUncheckedCreateWithoutMyPlaygroundInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMyPlaygroundInput
+export type UserCreateNestedOneWithoutMyPlagroundInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMyPlagroundInput, Prisma.UserUncheckedCreateWithoutMyPlagroundInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMyPlagroundInput
   connect?: Prisma.UserWhereUniqueInput
 }
 
-export type UserUpdateOneRequiredWithoutMyPlaygroundNestedInput = {
-  create?: Prisma.XOR<Prisma.UserCreateWithoutMyPlaygroundInput, Prisma.UserUncheckedCreateWithoutMyPlaygroundInput>
-  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMyPlaygroundInput
-  upsert?: Prisma.UserUpsertWithoutMyPlaygroundInput
+export type UserUpdateOneRequiredWithoutMyPlagroundNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutMyPlagroundInput, Prisma.UserUncheckedCreateWithoutMyPlagroundInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutMyPlagroundInput
+  upsert?: Prisma.UserUpsertWithoutMyPlagroundInput
   connect?: Prisma.UserWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMyPlaygroundInput, Prisma.UserUpdateWithoutMyPlaygroundInput>, Prisma.UserUncheckedUpdateWithoutMyPlaygroundInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutMyPlagroundInput, Prisma.UserUpdateWithoutMyPlagroundInput>, Prisma.UserUncheckedUpdateWithoutMyPlagroundInput>
 }
 
 export type UserCreateNestedOneWithoutStaredPlaygroundInput = {
@@ -438,10 +464,11 @@ export type UserCreateWithoutAccountsInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
-  myPlayground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
   staredPlayground?: Prisma.StarMarkCreateNestedManyWithoutUserInput
 }
 
@@ -450,10 +477,11 @@ export type UserUncheckedCreateWithoutAccountsInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
-  myPlayground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
   staredPlayground?: Prisma.StarMarkUncheckedCreateNestedManyWithoutUserInput
 }
 
@@ -478,10 +506,11 @@ export type UserUpdateWithoutAccountsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  myPlayground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
   staredPlayground?: Prisma.StarMarkUpdateManyWithoutUserNestedInput
 }
 
@@ -490,18 +519,20 @@ export type UserUncheckedUpdateWithoutAccountsInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  myPlayground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
   staredPlayground?: Prisma.StarMarkUncheckedUpdateManyWithoutUserNestedInput
 }
 
-export type UserCreateWithoutMyPlaygroundInput = {
+export type UserCreateWithoutMyPlagroundInput = {
   id?: string
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -509,11 +540,12 @@ export type UserCreateWithoutMyPlaygroundInput = {
   staredPlayground?: Prisma.StarMarkCreateNestedManyWithoutUserInput
 }
 
-export type UserUncheckedCreateWithoutMyPlaygroundInput = {
+export type UserUncheckedCreateWithoutMyPlagroundInput = {
   id?: string
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -521,27 +553,28 @@ export type UserUncheckedCreateWithoutMyPlaygroundInput = {
   staredPlayground?: Prisma.StarMarkUncheckedCreateNestedManyWithoutUserInput
 }
 
-export type UserCreateOrConnectWithoutMyPlaygroundInput = {
+export type UserCreateOrConnectWithoutMyPlagroundInput = {
   where: Prisma.UserWhereUniqueInput
-  create: Prisma.XOR<Prisma.UserCreateWithoutMyPlaygroundInput, Prisma.UserUncheckedCreateWithoutMyPlaygroundInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMyPlagroundInput, Prisma.UserUncheckedCreateWithoutMyPlagroundInput>
 }
 
-export type UserUpsertWithoutMyPlaygroundInput = {
-  update: Prisma.XOR<Prisma.UserUpdateWithoutMyPlaygroundInput, Prisma.UserUncheckedUpdateWithoutMyPlaygroundInput>
-  create: Prisma.XOR<Prisma.UserCreateWithoutMyPlaygroundInput, Prisma.UserUncheckedCreateWithoutMyPlaygroundInput>
+export type UserUpsertWithoutMyPlagroundInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutMyPlagroundInput, Prisma.UserUncheckedUpdateWithoutMyPlagroundInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutMyPlagroundInput, Prisma.UserUncheckedCreateWithoutMyPlagroundInput>
   where?: Prisma.UserWhereInput
 }
 
-export type UserUpdateToOneWithWhereWithoutMyPlaygroundInput = {
+export type UserUpdateToOneWithWhereWithoutMyPlagroundInput = {
   where?: Prisma.UserWhereInput
-  data: Prisma.XOR<Prisma.UserUpdateWithoutMyPlaygroundInput, Prisma.UserUncheckedUpdateWithoutMyPlaygroundInput>
+  data: Prisma.XOR<Prisma.UserUpdateWithoutMyPlagroundInput, Prisma.UserUncheckedUpdateWithoutMyPlagroundInput>
 }
 
-export type UserUpdateWithoutMyPlaygroundInput = {
+export type UserUpdateWithoutMyPlagroundInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -549,11 +582,12 @@ export type UserUpdateWithoutMyPlaygroundInput = {
   staredPlayground?: Prisma.StarMarkUpdateManyWithoutUserNestedInput
 }
 
-export type UserUncheckedUpdateWithoutMyPlaygroundInput = {
+export type UserUncheckedUpdateWithoutMyPlagroundInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -566,11 +600,12 @@ export type UserCreateWithoutStaredPlaygroundInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountCreateNestedManyWithoutUserInput
-  myPlayground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundCreateNestedManyWithoutUserInput
 }
 
 export type UserUncheckedCreateWithoutStaredPlaygroundInput = {
@@ -578,11 +613,12 @@ export type UserUncheckedCreateWithoutStaredPlaygroundInput = {
   name?: string | null
   email: string
   image?: string | null
+  emailVerified?: Date | string | null
   role?: $Enums.UserRole
   createdAt?: Date | string
   updatedAt?: Date | string
   accounts?: Prisma.AccountUncheckedCreateNestedManyWithoutUserInput
-  myPlayground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
+  myPlaground?: Prisma.PlaygroundUncheckedCreateNestedManyWithoutUserInput
 }
 
 export type UserCreateOrConnectWithoutStaredPlaygroundInput = {
@@ -606,11 +642,12 @@ export type UserUpdateWithoutStaredPlaygroundInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUpdateManyWithoutUserNestedInput
-  myPlayground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUpdateManyWithoutUserNestedInput
 }
 
 export type UserUncheckedUpdateWithoutStaredPlaygroundInput = {
@@ -618,11 +655,12 @@ export type UserUncheckedUpdateWithoutStaredPlaygroundInput = {
   name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.StringFieldUpdateOperationsInput | string
   image?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   accounts?: Prisma.AccountUncheckedUpdateManyWithoutUserNestedInput
-  myPlayground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
+  myPlaground?: Prisma.PlaygroundUncheckedUpdateManyWithoutUserNestedInput
 }
 
 
@@ -632,13 +670,13 @@ export type UserUncheckedUpdateWithoutStaredPlaygroundInput = {
 
 export type UserCountOutputType = {
   accounts: number
-  myPlayground: number
+  myPlaground: number
   staredPlayground: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | UserCountOutputTypeCountAccountsArgs
-  myPlayground?: boolean | UserCountOutputTypeCountMyPlaygroundArgs
+  myPlaground?: boolean | UserCountOutputTypeCountMyPlagroundArgs
   staredPlayground?: boolean | UserCountOutputTypeCountStaredPlaygroundArgs
 }
 
@@ -662,7 +700,7 @@ export type UserCountOutputTypeCountAccountsArgs<ExtArgs extends runtime.Types.E
 /**
  * UserCountOutputType without action
  */
-export type UserCountOutputTypeCountMyPlaygroundArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type UserCountOutputTypeCountMyPlagroundArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.PlaygroundWhereInput
 }
 
@@ -679,11 +717,12 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   name?: boolean
   email?: boolean
   image?: boolean
+  emailVerified?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  myPlayground?: boolean | Prisma.User$myPlaygroundArgs<ExtArgs>
+  myPlaground?: boolean | Prisma.User$myPlagroundArgs<ExtArgs>
   staredPlayground?: boolean | Prisma.User$staredPlaygroundArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
@@ -693,6 +732,7 @@ export type UserSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   email?: boolean
   image?: boolean
+  emailVerified?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -703,6 +743,7 @@ export type UserSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
   name?: boolean
   email?: boolean
   image?: boolean
+  emailVerified?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -713,15 +754,16 @@ export type UserSelectScalar = {
   name?: boolean
   email?: boolean
   image?: boolean
+  emailVerified?: boolean
   role?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "image" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "image" | "emailVerified" | "role" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   accounts?: boolean | Prisma.User$accountsArgs<ExtArgs>
-  myPlayground?: boolean | Prisma.User$myPlaygroundArgs<ExtArgs>
+  myPlaground?: boolean | Prisma.User$myPlagroundArgs<ExtArgs>
   staredPlayground?: boolean | Prisma.User$staredPlaygroundArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -732,7 +774,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   name: "User"
   objects: {
     accounts: Prisma.$AccountPayload<ExtArgs>[]
-    myPlayground: Prisma.$PlaygroundPayload<ExtArgs>[]
+    myPlaground: Prisma.$PlaygroundPayload<ExtArgs>[]
     staredPlayground: Prisma.$StarMarkPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -740,6 +782,7 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     name: string | null
     email: string
     image: string | null
+    emailVerified: Date | null
     role: $Enums.UserRole
     createdAt: Date
     updatedAt: Date
@@ -1138,7 +1181,7 @@ readonly fields: UserFieldRefs;
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   accounts<T extends Prisma.User$accountsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$accountsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AccountPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  myPlayground<T extends Prisma.User$myPlaygroundArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$myPlaygroundArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaygroundPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  myPlaground<T extends Prisma.User$myPlagroundArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$myPlagroundArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PlaygroundPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   staredPlayground<T extends Prisma.User$staredPlaygroundArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$staredPlaygroundArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$StarMarkPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1173,6 +1216,7 @@ export interface UserFieldRefs {
   readonly name: Prisma.FieldRef<"User", 'String'>
   readonly email: Prisma.FieldRef<"User", 'String'>
   readonly image: Prisma.FieldRef<"User", 'String'>
+  readonly emailVerified: Prisma.FieldRef<"User", 'DateTime'>
   readonly role: Prisma.FieldRef<"User", 'UserRole'>
   readonly createdAt: Prisma.FieldRef<"User", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"User", 'DateTime'>
@@ -1588,9 +1632,9 @@ export type User$accountsArgs<ExtArgs extends runtime.Types.Extensions.InternalA
 }
 
 /**
- * User.myPlayground
+ * User.myPlaground
  */
-export type User$myPlaygroundArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type User$myPlagroundArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
    * Select specific fields to fetch from the Playground
    */
