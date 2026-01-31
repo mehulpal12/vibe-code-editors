@@ -237,7 +237,7 @@ export type StarMarkCreateInput = {
   isMarked: boolean
   createdAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutStaredPlaygroundInput
-  playground: Prisma.PlaygroundCreateNestedOneWithoutStarmarksInput
+  playground: Prisma.PlaygroundCreateNestedOneWithoutStarmarkInput
 }
 
 export type StarMarkUncheckedCreateInput = {
@@ -253,7 +253,7 @@ export type StarMarkUpdateInput = {
   isMarked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutStaredPlaygroundNestedInput
-  playground?: Prisma.PlaygroundUpdateOneRequiredWithoutStarmarksNestedInput
+  playground?: Prisma.PlaygroundUpdateOneRequiredWithoutStarmarkNestedInput
 }
 
 export type StarMarkUncheckedUpdateInput = {
@@ -417,7 +417,7 @@ export type StarMarkCreateWithoutUserInput = {
   id?: string
   isMarked: boolean
   createdAt?: Date | string
-  playground: Prisma.PlaygroundCreateNestedOneWithoutStarmarksInput
+  playground: Prisma.PlaygroundCreateNestedOneWithoutStarmarkInput
 }
 
 export type StarMarkUncheckedCreateWithoutUserInput = {
@@ -515,7 +515,7 @@ export type StarMarkUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   isMarked?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  playground?: Prisma.PlaygroundUpdateOneRequiredWithoutStarmarksNestedInput
+  playground?: Prisma.PlaygroundUpdateOneRequiredWithoutStarmarkNestedInput
 }
 
 export type StarMarkUncheckedUpdateWithoutUserInput = {

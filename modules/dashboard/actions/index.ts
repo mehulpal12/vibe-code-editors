@@ -1,6 +1,7 @@
 "use server";
 
 import { db } from "@/lib/db";
+import { auth } from "@/auth";
 import { currentUser } from "@/modules/auth/actions";
 import { revalidatePath } from "next/cache";
 
@@ -74,7 +75,15 @@ export const createPlayground = async (data: {
   template: "REACT" | "NEXTJS" | "EXPRESS" | "VUE" | "HONO" | "ANGULAR";
   description?: string;
 }) => {
-  const user = await currentUser();
+  const session = await auth();
+  const user = session?.user;
+  // console.log(user);
+  // console.log(currentUser);
+  
+  
+  if (!user || !user.id) {
+  throw new Error("You must be logged in to create a playground");
+}
 
   const { template, title, description } = data;
 

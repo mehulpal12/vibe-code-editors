@@ -37,6 +37,6 @@ export const getAccountByUserId = async(userId:string)=>{
 }
 
 export const currentUser  = async()=>{
-    const user = await auth();
+    const user = await auth();    
     return user?.user;
 }

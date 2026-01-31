@@ -11,6 +11,13 @@ declare module "next-auth"{
         user:ExtendedUser
     }
 }
+declare module "next-auth" {
+  interface Session {
+    user: {
+      id: string
+    } & DefaultSession["user"]
+  }
+}
 
 import {JWT} from "next-auth/jwt";
 
