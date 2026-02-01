@@ -51,17 +51,17 @@ export const getAllPlaygroundForUser = async () => {
       where: {
         userId: user?.id,
       },
-      // include: {
-      //   user: true,
-      //   Starmark:{
-      //       where:{
-      //           userId:user!.id!
-      //       },
-      //       select:{
-      //           isMarked:true
-      //       }
-      //   }
-      // },
+      include: {
+        user: true,
+        Starmark:{
+            where:{
+                userId:user!.id!
+            },
+            select:{
+                isMarked:true
+            }
+        }
+      },
     });
 
     return playground;
