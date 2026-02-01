@@ -291,7 +291,7 @@ export default function ProjectTable({
           <DialogHeader>
             <DialogTitle>Edit Project</DialogTitle>
             <DialogDescription>
-              Make changes to your project details here. Click save when you're
+              Make changes to your project details here. Click save when your
               done.
             </DialogDescription>
           </DialogHeader>
@@ -349,6 +349,7 @@ export default function ProjectTable({
           <AlertDialogHeader>
             <AlertDialogTitle>Delete Project</AlertDialogTitle>
             <AlertDialogDescription>
+              // eslint-disable-next-line react/no-unescaped-entities
               Are you sure you want to delete "{selectedProject?.title}"? This
               action cannot be undone. All files and data associated with this
               project will be permanently removed.

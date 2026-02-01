@@ -10,7 +10,7 @@ export default async function DashboardLayout({
 
     const playgroundData = await getAllPlaygroundForUser();
 
-    console.log("playgroundData", playgroundData);
+    // console.log("playgroundData", playgroundData);
 
   const technologyIconMap: Record<string, string> = {
     REACT: "Zap",
