@@ -6,6 +6,11 @@ import { usePlayground } from "@/modules/playground/hooks/usePlayground"
 import { TooltipProvider } from "@radix-ui/react-tooltip"
 import { useParams } from "next/navigation"
 import { useFileExplorer } from "@/modules/playground/hooks/useFileExplorer";
+import { useEffect } from "react"
+import {
+  TemplateFile,
+  TemplateFolder,
+} from "@/modules/playground/lib/path-to-json";
 
 
 
@@ -32,15 +37,34 @@ const MainPlaygroundpage = () =>{
     handleRenameFolder,
     updateFileContent
   } = useFileExplorer();
+      useEffect(() => {
+    setPlaygroundId(id);
+  }, [id, setPlaygroundId]);
+
+  useEffect(() => {
+    if (templateData && !openFiles.length) {
+      setTemplateData(templateData);
+    }
+  }, [templateData, setTemplateData, openFiles.length]);
+
+
+
+
   const activeFile = openFiles.find((file) => file.id === activeFileId);
-    console.log("temeplatedata",templateData);
-    console.log("playgroundData",playgroundData);
-    
+  const hasUnsavedChanges = openFiles.some((file) => file.hasUnsavedChanges);
+
+    const handleFileSelect = (file: TemplateFile) => {
+    openFile(file);
+  };
+
+
+
+
     return(
         <TooltipProvider>
             <TemplateFileTree
             data={templateData!}
-            onFileSelect={()=>{}}
+            onFileSelect={handleFileSelect}
             selectedFile={activeFile}
             title="File Explorer"
           onAddFile={()=>{}}
