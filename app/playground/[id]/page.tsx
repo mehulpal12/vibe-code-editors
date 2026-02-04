@@ -194,11 +194,8 @@ const MainPlaygroundpage = () => {
                     </div>
                   </Tabs>
                 </div>
-                <div className="flex-">
-                  {activeFile?.content}
-                </div>
-                {/* <div className="flex-1">
-                  <ResizablePanelGroup
+                <div className="flex-1">
+                  <ResizablePanelGroup 
                     direction="horizontal"
                     className="h-full"
                   >
@@ -206,27 +203,13 @@ const MainPlaygroundpage = () => {
                       <PlaygroundEditor
                         activeFile={activeFile}
                         content={activeFile?.content || ""}
-                        onContentChange={(value) => 
-                          activeFileId && updateFileContent(activeFileId , value)
-                        }
-                        suggestion={aiSuggestions.suggestion}
-                        suggestionLoading={aiSuggestions.isLoading}
-                        suggestionPosition={aiSuggestions.position}
-                        onAcceptSuggestion={(editor , monaco)=>aiSuggestions.acceptSuggestion(editor , monaco)}
-
-                          onRejectSuggestion={(editor) =>
-                          aiSuggestions.rejectSuggestion(editor)
-                        }
-                        onTriggerSuggestion={(type, editor) =>
-                          aiSuggestions.fetchSuggestion(type, editor)
-                        }
-                      />
+                        onContentChange={() => {}}                      />
                     </ResizablePanel>
 
                     {isPreviewVisible && (
                       <>
                         <ResizableHandle />
-                        <ResizablePanel defaultSize={50}>
+                        {/* <ResizablePanel defaultSize={50}>
                           <WebContainerPreview
                             templateData={templateData}
                             instance={instance}
@@ -236,11 +219,11 @@ const MainPlaygroundpage = () => {
                             serverUrl={serverUrl!}
                             forceResetup={false}
                           />
-                        </ResizablePanel>
+                        </ResizablePanel> */}
                       </>
                     )}
                   </ResizablePanelGroup>
-                </div> */}
+                </div>
               </div>
             ) : (
               <div className="flex flex-col h-full items-center justify-center text-muted-foreground gap-4">
