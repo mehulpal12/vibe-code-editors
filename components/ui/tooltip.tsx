@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
+import { Slot } from "@radix-ui/react-slot"
 
 import { cn } from "@/lib/utils"
 
@@ -29,10 +30,16 @@ function Tooltip({
 }
 
 function TooltipTrigger({
+  children,
   ...props
 }: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
-  return <TooltipPrimitive.Trigger data-slot="tooltip-trigger" {...props} />
+  return (
+    <TooltipPrimitive.Trigger asChild {...props}>
+      {children}
+    </TooltipPrimitive.Trigger>
+  )
 }
+// ide feature added last commit 
 
 function TooltipContent({
   className,
