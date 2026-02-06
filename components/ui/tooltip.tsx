@@ -30,14 +30,16 @@ function Tooltip({
 }
 
 function TooltipTrigger({
-  asChild = false,
+  children,
   ...props
-}: React.ComponentProps<typeof TooltipPrimitive.Trigger> & {
-  asChild?: boolean
-}) {
-  const Comp = asChild ? Slot : TooltipPrimitive.Trigger
-  return <Comp data-slot="tooltip-trigger" {...props} />
+}: React.ComponentProps<typeof TooltipPrimitive.Trigger>) {
+  return (
+    <TooltipPrimitive.Trigger asChild {...props}>
+      {children}
+    </TooltipPrimitive.Trigger>
+  )
 }
+// ide feature added last commit 
 
 function TooltipContent({
   className,
