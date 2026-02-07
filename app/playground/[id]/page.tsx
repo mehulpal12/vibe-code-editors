@@ -47,6 +47,7 @@ import LoadingStep from "@/modules/playground/components/loader";
 import { toast } from "sonner";
 import { findFilePath } from "@/modules/playground/lib";
 import ToggleAI from "@/modules/playground/components/toggle-ai";
+import { useAISuggestions } from "@/modules/playground/hooks/useAISuggestion";
 
 const MainPlaygroundpage = () => {
   const { id } = useParams();
@@ -83,6 +84,7 @@ const MainPlaygroundpage = () => {
   } = useWebContainer({ templateData });
 
   const lastSyncedContent = useRef<Map<string, string>>(new Map());
+  const aiSuggestions = useAISuggestions()
 
   useEffect(() => {
     setPlaygroundId(id);
@@ -402,9 +404,9 @@ const MainPlaygroundpage = () => {
               </Tooltip>
 
               <ToggleAI
-              isEnabled={true}
-              onToggle={()=>{}}
-              suggestionLoading={false}
+              isEnabled={aiSuggestions.isEnabled}
+              onToggle={aiSuggestions.toggleEnabled}
+              suggestionLoading={aiSuggestions.isLoading}
               
               />
 
@@ -492,6 +494,17 @@ const MainPlaygroundpage = () => {
                       onContentChange={(value) => {
                         activeFileId && updateFileContent(activeFileId, value)
                       }}
+                        suggestion={aiSuggestions.suggestion}
+                        suggestionLoading={aiSuggestions.isLoading}
+                        suggestionPosition={aiSuggestions.position}
+                        onAcceptSuggestion={(editor , monaco)=>aiSuggestions.acceptSuggestion(editor , monaco)}
+
+                          onRejectSuggestion={(editor) =>
+                          aiSuggestions.rejectSuggestion(editor)
+                          }
+                          onTriggerSuggestion={(type, editor) =>
+                          aiSuggestions.fetchSuggestion(type, editor)
+                        }
                     />
                   </ResizablePanel>
 
