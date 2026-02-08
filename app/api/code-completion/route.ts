@@ -143,7 +143,7 @@ async function generateSuggestion(prompt: string): Promise<string> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "gpt-oss:120b-cloud",
+        model: "qwen2.5-coder:1.5b",
         prompt,
         stream: false,
         option: {
